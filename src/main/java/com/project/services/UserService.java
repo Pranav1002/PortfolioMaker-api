@@ -1,5 +1,7 @@
 package com.project.services;
 
+import com.project.dto.LoginDto;
+import com.project.exceptions.NotFoundException;
 import com.project.models.User;
 import com.project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +39,12 @@ public class UserService {
             return userRepository.save(updatedUser);
         }
         return null;
+    }
+
+    public User loginUser(LoginDto loginDto)
+    {
+        User user = userRepository.findByEmail(loginDto.email).orElseThrow(()-> new NotFoundException("Email not found"));
+
+        return user;
     }
 }

@@ -1,5 +1,6 @@
 package com.project.controllers;
 
+import com.project.dto.LoginDto;
 import com.project.exceptions.NotFoundException;
 import com.project.models.User;
 import com.project.services.UserService;
@@ -20,7 +21,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
@@ -44,6 +45,12 @@ public class UserController {
     @DeleteMapping("/{userId}")
     public void deleteUser(@PathVariable Integer userId) {
         userService.deleteUser(userId);
+    }
+
+    @PostMapping("/lpgin")
+    public User loginUser(@RequestBody LoginDto loginDto)
+    {
+        return userService.loginUser(loginDto);
     }
 }
 
