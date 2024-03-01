@@ -43,7 +43,7 @@ public class UserService {
 
     public User loginUser(LoginDto loginDto)
     {
-        User user = userRepository.findByEmail(loginDto.email).orElseThrow(()-> new NotFoundException("Email not found"));
+        User user = userRepository.findByEmailAAndPassword(loginDto.getEmail(), loginDto.getPassword()).orElseThrow(()-> new NotFoundException("Wrong credentials"));
 
         return user;
     }
