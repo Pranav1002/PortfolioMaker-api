@@ -24,15 +24,9 @@ public class EducationController {
         return educationService.createEducation(education);
     }
 
-    @GetMapping
-    public List<Education> getAllEducations() {
-        return educationService.getAllEducations();
-    }
-
-    @GetMapping("/{eduId}")
-    public Education getEducationById(@PathVariable Integer eduId) {
-        return educationService.getEducationById(eduId)
-                .orElseThrow(() -> new NotFoundException("Education not found with id: " + eduId));
+    @GetMapping("/{userId}")
+    public List<Education> getEducationById(@PathVariable Integer userId) {
+        return educationService.getEducationByUserId(userId);
     }
 
     @PutMapping("/{eduId}")

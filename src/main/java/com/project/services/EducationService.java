@@ -17,8 +17,8 @@ public class EducationService {
         return educationRepository.save(education);
     }
 
-    public List<Education> getAllEducations() {
-        return educationRepository.findAll();
+    public List<Education> getEducationByUserId(Integer userId) {
+        return educationRepository.findByUser_UserId(userId);
     }
 
     public Optional<Education> getEducationById(Integer eduId) {

@@ -47,7 +47,7 @@ public class UserController {
         userService.deleteUser(userId);
     }
 
-    @PostMapping("/lpgin")
+    @PostMapping("/login")
     public User loginUser(@RequestBody LoginDto loginDto)
     {
         return userService.loginUser(loginDto);
