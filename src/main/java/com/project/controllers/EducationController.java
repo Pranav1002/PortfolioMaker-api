@@ -24,17 +24,17 @@ public class EducationController {
         return educationService.createEducation(education);
     }
 
-    @GetMapping("/{userId}")
-    public List<Education> getEducationById(@PathVariable Integer userId) {
+    @GetMapping("/get/{userId}")
+    public List<Education> getEducationByUserId(@PathVariable Integer userId) {
         return educationService.getEducationByUserId(userId);
     }
 
-    @PutMapping("/{eduId}")
+    @PutMapping("/update/{eduId}")
     public Education updateEducation(@PathVariable Integer eduId, @RequestBody Education updatedEducation) {
         return educationService.updateEducation(eduId, updatedEducation);
     }
 
-    @DeleteMapping("/{eduId}")
+    @DeleteMapping("/delete/{eduId}")
     public void deleteEducation(@PathVariable Integer eduId) {
         educationService.deleteEducation(eduId);
     }

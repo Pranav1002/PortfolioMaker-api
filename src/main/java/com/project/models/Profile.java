@@ -15,14 +15,14 @@ public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer Id;
+    private Integer Id;
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    public User user;
+    private User user;
 
-    public String status;
+    private String status;
 
-    public String template;
+    private String template;
 
 }

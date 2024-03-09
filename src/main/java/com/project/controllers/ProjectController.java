@@ -1,6 +1,7 @@
 package com.project.controllers;
 
 import com.project.exceptions.NotFoundException;
+import com.project.models.Education;
 import com.project.models.Project;
 import com.project.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ public class ProjectController {
         return projectService.createProject(project);
     }
 
-    @GetMapping
-    public List<Project> getAllProjects() {
-        return projectService.getAllProjects();
+    @GetMapping("/get/{userId}")
+    public List<Project> getProjectsByUserId(@PathVariable Integer userId) {
+        return projectService.getEducationByUserId(userId);
     }
 
     @GetMapping("/{projectId}")
@@ -35,12 +36,12 @@ public class ProjectController {
                 .orElseThrow(() -> new NotFoundException("Project not found with id: " + projectId));
     }
 
-    @PutMapping("/{projectId}")
+    @PutMapping("/update/{projectId}")
     public Project updateProject(@PathVariable Integer projectId, @RequestBody Project updatedProject) {
         return projectService.updateProject(projectId, updatedProject);
     }
 
-    @DeleteMapping("/{projectId}")
+    @DeleteMapping("/delete/{projectId}")
     public void deleteProject(@PathVariable Integer projectId) {
         projectService.deleteProject(projectId);
     }

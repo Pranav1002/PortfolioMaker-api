@@ -30,6 +30,7 @@ public class EducationService {
     }
 
     public Education updateEducation(Integer eduId, Education updatedEducation) {
+        System.out.println("CPI: "+updatedEducation.getGrade());
         if (educationRepository.existsById(eduId)) {
             updatedEducation.setEduId(eduId);
             return educationRepository.save(updatedEducation);

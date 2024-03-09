@@ -1,5 +1,6 @@
 package com.project.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,14 +16,15 @@ public class Education {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer eduId;
-    public String institute;
-    public String degree;
-    public String field;
-    public float grade;
+    private Integer eduId;
+    private String institute;
+    private String degree;
+    private String field;
+    private Float grade;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "user_id")
-    public User user;
+    private User user;
     
 }

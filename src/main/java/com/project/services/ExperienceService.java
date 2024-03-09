@@ -1,5 +1,6 @@
 package com.project.services;
 
+import com.project.models.Education;
 import com.project.models.Experience;
 import com.project.repositories.ExperienceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,12 @@ public class ExperienceService {
         return experienceRepository.save(experience);
     }
 
-    public List<Experience> getAllExperiences() {
-        return experienceRepository.findAll();
-    }
+//    public List<Experience> getEducationByUserId(Integer userId) {
+//        return experienceRepository.findByUser_UserId(userId);
+//    }
+public List<Experience> getEducationByUserId(Integer userId) {
+    return experienceRepository.findByUser_UserId(userId);
+}
 
     public Optional<Experience> getExperienceById(Integer expId) {
         return experienceRepository.findById(expId);

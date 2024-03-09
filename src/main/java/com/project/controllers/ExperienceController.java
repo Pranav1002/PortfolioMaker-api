@@ -1,6 +1,7 @@
 package com.project.controllers;
 
 import com.project.exceptions.NotFoundException;
+import com.project.models.Education;
 import com.project.models.Experience;
 import com.project.services.ExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ public class ExperienceController {
         return experienceService.createExperience(experience);
     }
 
-    @GetMapping
-    public List<Experience> getAllExperiences() {
-        return experienceService.getAllExperiences();
+    @GetMapping("/get/{userId}")
+    public List<Experience> getEducationByUserId(@PathVariable Integer userId) {
+        return experienceService.getEducationByUserId(userId);
     }
 
     @GetMapping("/{expId}")
@@ -35,12 +36,12 @@ public class ExperienceController {
                 .orElseThrow(() -> new NotFoundException("Experience not found with id: " + expId));
     }
 
-    @PutMapping("/{expId}")
+    @PutMapping("/update/{expId}")
     public Experience updateExperience(@PathVariable Integer expId, @RequestBody Experience updatedExperience) {
         return experienceService.updateExperience(expId, updatedExperience);
     }
 
-    @DeleteMapping("/{expId}")
+    @DeleteMapping("/delete/{expId}")
     public void deleteExperience(@PathVariable Integer expId) {
         experienceService.deleteExperience(expId);
     }

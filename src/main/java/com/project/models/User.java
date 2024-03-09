@@ -1,13 +1,13 @@
 package com.project.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,16 +18,28 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer userId;
+    private Integer userId;
 
-    public String email;
+    private String email;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String about;
+    private String gender;
+    private String githubProfile;
+    private String linkedInProfile;
 
-    public String password;
-    public String firstName;
-    public String lastName;
-    public String about;
-    public String gender;
-    public String githubProfile;
-    public String linkedInProfile;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Education> educations;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Experience> experinces;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Project> projects;
+    
 
 }

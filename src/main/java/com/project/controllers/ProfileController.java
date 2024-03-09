@@ -29,18 +29,17 @@ public class ProfileController {
         return profileService.getAllProfiles();
     }
 
-    @GetMapping("/{profileId}")
-    public Profile getProfileById(@PathVariable Integer profileId) {
-        return profileService.getProfileById(profileId)
-                .orElseThrow(() -> new NotFoundException("Profile not found with id: " + profileId));
+    @GetMapping("/get/{userId}")
+    public Profile getProfileById(@PathVariable Integer userId) {
+        return profileService.getProfileByUserId(userId);
     }
 
-    @PutMapping("/{profileId}")
+    @PutMapping("/update/{profileId}")
     public Profile updateProfile(@PathVariable Integer profileId, @RequestBody Profile updatedProfile) {
         return profileService.updateProfile(profileId, updatedProfile);
     }
 
-    @DeleteMapping("/{profileId}")
+    @DeleteMapping("/delete/{profileId}")
     public void deleteProfile(@PathVariable Integer profileId) {
         profileService.deleteProfile(profileId);
     }

@@ -18,10 +18,9 @@ public class ProjectService {
         return projectRepository.save(project);
     }
 
-    public List<Project> getAllProjects() {
-        return projectRepository.findAll();
+    public List<Project> getEducationByUserId(Integer userId) {
+        return projectRepository.findByUser_UserId(userId);
     }
-
     public Optional<Project> getProjectById(Integer projectId) {
         return projectRepository.findById(projectId);
     }
