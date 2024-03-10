@@ -25,8 +25,8 @@ public class EducationController {
     }
 
     @GetMapping("/get/{userId}")
-    public List<Education> getEducationByUserId(@PathVariable Integer userId) {
-        return educationService.getEducationByUserId(userId);
+    public List<Education> getEducationsByUserId(@PathVariable Integer userId) {
+        return educationService.getEducationsByUserId(userId);
     }
 
     @PutMapping("/update/{eduId}")

@@ -21,9 +21,9 @@ public class ExperienceService {
 //    public List<Experience> getEducationByUserId(Integer userId) {
 //        return experienceRepository.findByUser_UserId(userId);
 //    }
-public List<Experience> getEducationByUserId(Integer userId) {
-    return experienceRepository.findByUser_UserId(userId);
-}
+    public List<Experience> getExperiencesByUserId(Integer userId) {
+        return experienceRepository.findByUser_UserId(userId);
+    }
 
     public Optional<Experience> getExperienceById(Integer expId) {
         return experienceRepository.findById(expId);
