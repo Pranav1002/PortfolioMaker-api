@@ -26,7 +26,7 @@ public class ExperienceController {
     }
 
     @GetMapping("/get/{userId}")
-    public List<Experience> getEducationsByUserId(@PathVariable Integer userId) {
+    public List<Experience> getExperiencesByUserId(@PathVariable Integer userId) {
         return experienceService.getExperiencesByUserId(userId);
     }
 
