@@ -49,6 +49,7 @@ public class User implements UserDetails{
     private List<Project> projects;
 
     @OneToOne(mappedBy = "user")
+    @JsonManagedReference
     private RefreshToken refreshToken;
 
     @Enumerated(EnumType.STRING)

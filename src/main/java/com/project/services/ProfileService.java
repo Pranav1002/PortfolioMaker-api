@@ -4,6 +4,7 @@ import com.project.exceptions.NotFoundException;
 import com.project.models.Profile;
 import com.project.models.User;
 import com.project.repositories.ProfileRepository;
+import com.project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -14,6 +15,9 @@ public class ProfileService {
 
     @Autowired
     private ProfileRepository profileRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private  UserService userService;
@@ -41,12 +45,18 @@ public class ProfileService {
         profileRepository.deleteById(profileId);
     }
 
-    public Profile updateProfile(Integer profileId, Profile updatedProfile) {
-        if (profileRepository.existsById(profileId)) {
-            updatedProfile.setId(profileId);
-            return profileRepository.save(updatedProfile);
-        }
-        return null;
+    public Profile updateProfile(Integer userId, Profile updatedProfile) {
+
+        User user = userRepository.findById(userId).orElseThrow(()->new RuntimeException("User not found"));
+
+        Profile profile = profileRepository.findByUser(user).orElseThrow(()->new RuntimeException("User not found"));
+
+        profile.setStatus(updatedProfile.getStatus());
+        profile.setStatus(updatedProfile.getStatus());
+
+        return profileRepository.save(profile);
+
+
     }
 }
 

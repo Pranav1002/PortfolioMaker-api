@@ -1,5 +1,6 @@
 package com.project.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -28,5 +29,6 @@ public class RefreshToken {
     private Instant expirationTime;
 
     @OneToOne
+    @JsonBackReference
     private User user;
 }

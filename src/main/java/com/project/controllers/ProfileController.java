@@ -34,9 +34,9 @@ public class ProfileController {
         return profileService.getProfileByUserId(userId);
     }
 
-    @PutMapping("/update/{profileId}")
-    public Profile updateProfile(@PathVariable Integer profileId, @RequestBody Profile updatedProfile) {
-        return profileService.updateProfile(profileId, updatedProfile);
+    @PutMapping("/update/{userId}")
+    public Profile updateProfile(@PathVariable Integer userId, @RequestBody Profile updatedProfile) {
+        return profileService.updateProfile(userId, updatedProfile);
     }
 
     @DeleteMapping("/delete/{profileId}")
